@@ -1,7 +1,7 @@
 export const SignInForm = () => {
   return (
-    <section className="flex flex-col items-center -mt-11 pt-20 rounded-t-[2rem] bg-[#1A5BB7]">
-      <div className="w-3/5 min-w-fit max-w-md flex flex-col items-center gap-6 py-8 px-6 rounded-[2rem] bg-slate-50">
+    <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
+      <div className="w-3/5 min-w-fit max-w-lg flex flex-col items-center gap-6 py-8 px-4 rounded-[2rem] bg-slate-50">
         <h2 className="text-4xl font-semibold">Sign In</h2>
 
         <form className="w-4/5 flex flex-col gap-6">
@@ -30,7 +30,10 @@ export const SignInForm = () => {
             />
           </div>
           <div className="flex flex-col">
-            <button type="submit" className="px-4 py-3 rounded-lg text-white text-lg bg-[#19222E]">
+            <button
+              type="submit"
+              className="px-4 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+            >
               Sign In
             </button>
           </div>
