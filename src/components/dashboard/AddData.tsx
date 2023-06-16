@@ -98,61 +98,66 @@ export const AddData = () => {
       <DashboardHeader />
       <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
         <div className="w-4/5 max-w-3xl flex flex-col items-left gap-6 py-8 px-10 overflow-auto rounded-[2rem] bg-slate-50">
-          <h2 className="text-4xl font-semibold">Add Data</h2>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <h2 className="text-4xl font-semibold">Add Data</h2>
 
-          <form className="w-full flex flex-col gap-1">
-            <div className="flex flex-col gap-1">
-              <label htmlFor="name" className="text-lg">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="..."
-                required
-                className="px-3 py-2 rounded-lg border-2 border-gray-300"
-                onChange={(e) => handleFormInput(e)}
-                onBlur={() => validateInput()}
-              />
-              <span
-                className={`text-rose-600 text-sm ${
-                  !displayError.name && "invisible"
-                }`}
-              >
-                Name needs at least 3 characters
-              </span>
-            </div>
+              <form className="w-full flex flex-col gap-1">
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="name" className="text-lg">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="..."
+                    required
+                    className="px-3 py-2 rounded-lg border-2 border-gray-300"
+                    onChange={(e) => handleFormInput(e)}
+                    onBlur={() => validateInput()}
+                  />
+                  <span
+                    className={`text-rose-600 text-sm ${
+                      !displayError.name && "invisible"
+                    }`}
+                  >
+                    Name needs at least 3 characters
+                  </span>
+                </div>
 
-            <div className="flex flex-col gap-1">
-              <label htmlFor="isActive" className="text-lg">
-                Is Active
-              </label>
-              <input
-                type="checkbox"
-                name="isActive"
-                id="isActive"
-                className="w-8 h-8 text-xl flex items-center justify-center appearance-none border border-slate-300 rounded-md cursor-pointer checked:bg-slate-200 checked:border-transparent after:checked:content-['✔️']"
-                onChange={(e) =>
-                  setInputForm((prev) => ({
-                    ...prev,
-                    is_active: e.target.checked,
-                  }))
-                }
-              />
-            </div>
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="isActive" className="text-lg">
+                    Is Active
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="isActive"
+                    id="isActive"
+                    className="w-8 h-8 text-xl flex items-center justify-center appearance-none border border-slate-300 rounded-md cursor-pointer checked:bg-slate-200 checked:border-transparent after:checked:content-['✔️']"
+                    onChange={(e) =>
+                      setInputForm((prev) => ({
+                        ...prev,
+                        is_active: e.target.checked,
+                      }))
+                    }
+                  />
+                </div>
 
-            <div className="w-fit flex flex-col mt-5">
-              <button
-                type="submit"
-                className="px-6 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
-                onClick={(e) => handleFormSubmit(e)}
-              >
-                Add New Data
-              </button>
-            </div>
-            {loading && <Loading />}
-          </form>
+                <div className="w-fit flex flex-col mt-5">
+                  <button
+                    type="submit"
+                    className="px-6 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+                    onClick={(e) => handleFormSubmit(e)}
+                  >
+                    Add New Data
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       </section>
     </>
