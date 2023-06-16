@@ -3,6 +3,7 @@ import { DashboardHeader } from "./DashboardHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loading } from "../Loading";
+import { FetchError } from "./FetchError";
 
 type InputFormType = {
   name: string;
@@ -27,6 +28,7 @@ export const EditData = () => {
     name: false,
   });
   const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
 
   const handleFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputForm({
@@ -88,7 +90,7 @@ export const EditData = () => {
       });
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      setFetchError(true);
       setLoading(false);
     }
   };
@@ -125,12 +127,15 @@ export const EditData = () => {
     <>
       <DashboardHeader />
       <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
-        <div className="w-4/5 max-w-3xl flex flex-col items-left gap-6 py-8 px-10 overflow-auto rounded-[2rem] bg-slate-50">
-          <h2 className="text-4xl font-semibold">Edit Data</h2>
+        <div className="w-4/5 max-w-5xl flex flex-col items-left gap-6 py-8 px-10 overflow-auto rounded-[2rem] bg-slate-50">
           {loading ? (
             <Loading />
+          ) : fetchError ? (
+            <FetchError />
           ) : (
             <>
+              <h2 className="text-4xl font-semibold">Edit Data</h2>
+
               <form className="w-full flex flex-col gap-1">
                 <div className="flex flex-col gap-1">
                   <label htmlFor="name" className="text-lg">
