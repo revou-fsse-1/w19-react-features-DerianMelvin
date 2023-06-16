@@ -1,9 +1,17 @@
 import { Navigate } from "react-router-dom";
 
 export const AuthRoute = () => {
-  const isAuthenticated = false;
+  const token = localStorage.getItem("token");
+  const noTokenExist = token == null || token == undefined;
+  const isAuthenticated = () => {
+    if (noTokenExist) {
+      return false;
+    }
 
-  return isAuthenticated ? (
+    return true;
+  };
+
+  return isAuthenticated() ? (
     <Navigate to="/dashboard" replace />
   ) : (
     <Navigate to="/login" replace />
