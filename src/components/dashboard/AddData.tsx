@@ -97,7 +97,7 @@ export const AddData = () => {
     <>
       <DashboardHeader />
       <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
-        <div className="w-4/5 max-w-3xl flex flex-col items-left gap-6 py-8 px-10 overflow-auto rounded-[2rem] bg-slate-50">
+        <div className="w-4/5 max-w-5xl flex flex-col items-left gap-6 py-10 px-10 overflow-auto rounded-[2rem] bg-slate-50">
           {loading ? (
             <Loading />
           ) : (

@@ -7,7 +7,7 @@ export const ErrorPage = () => {
       <AuthHeader />
       <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
         <div className="w-4/5 min-w-fit max-w-xl flex flex-col items-center gap-6 py-8 px-4 rounded-[2rem] bg-slate-50">
-          <h1 className="text-9xl text-gray-400">404</h1>
+          <h1 className="text-9xl text-rose-300 font-semibold">ERROR</h1>
           <h2 className="text-4xl">Oopsie!</h2>
           <p>The page you're looking for isn't here</p>
           <Link
