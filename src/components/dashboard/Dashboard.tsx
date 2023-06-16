@@ -4,6 +4,7 @@ import axios from "axios";
 import { TableData } from "./TableData";
 import { Loading } from "../Loading";
 import { useNavigate } from "react-router-dom";
+import { FetchError } from "./FetchError";
 
 type CategoryDataType = {
   id: string;
@@ -39,6 +40,12 @@ export const Dashboard = () => {
     }
   };
 
+  const updateCategoryData = (id: string) => {
+    const filtered = categoryData?.filter((data) => data.id !== id);
+
+    setCategoryData(filtered);
+  };
+
   useEffect(() => {
     fetchFromAPI();
   }, []);
@@ -47,14 +54,11 @@ export const Dashboard = () => {
     <>
       <DashboardHeader />
       <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
-        <div className="w-4/5 max-w-3xl flex flex-col items-left gap-6 py-10 px-8 overflow-auto rounded-[2rem] bg-slate-50">
+        <div className="w-4/5 max-w-5xl flex flex-col items-left gap-6 py-10 px-8 overflow-auto rounded-[2rem] bg-slate-50">
           {isLoading ? (
             <Loading />
           ) : displayError ? (
-            <div className="w-full flex items-center justify-center text-center">
-              <h1 className="text-4xl">ERROR</h1>
-              <p className="text-xl text-gray-400">Unable to fetch data</p>
-            </div>
+            <FetchError />
           ) : (
             <>
               <div>
@@ -70,9 +74,7 @@ export const Dashboard = () => {
                 <thead className="text-left text-white bg-[#1A5BB7]">
                   <tr>
                     <th className="px-3 py-2 rounded-tl-xl">Id</th>
-                    <th className="min-w-fit px-3 py-2 text-center">
-                      Name
-                    </th>
+                    <th className="min-w-fit px-3 py-2 text-center">Name</th>
                     <th className="min-w-fit w-28 px-3 py-2 text-center">
                       Is Active
                     </th>
@@ -88,6 +90,8 @@ export const Dashboard = () => {
                       id={data.id}
                       name={data.name}
                       isActive={data.is_active}
+                      setIsLoading={setIsLoading}
+                      updateCategoryData={updateCategoryData}
                     />
                   ))}
                 </tbody>
