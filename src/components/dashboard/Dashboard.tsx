@@ -3,6 +3,7 @@ import { DashboardHeader } from "./DashboardHeader";
 import axios from "axios";
 import { TableData } from "./TableData";
 import { Loading } from "../Loading";
+import { useNavigate } from "react-router-dom";
 
 type CategoryDataType = {
   id: string;
@@ -13,6 +14,7 @@ type CategoryDataType = {
 };
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const [categoryData, setCategoryData] = useState<CategoryDataType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -48,18 +50,27 @@ export const Dashboard = () => {
           ) : (
             <>
               <div>
-                <button className="px-4 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]">
+                <button
+                  onClick={() => navigate("./add")}
+                  className="px-4 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+                >
                   Add Data
                 </button>
               </div>
 
-              <table className="w-full table-auto border-collapse border border-slate-600">
-                <thead className="text-left bg-slate-400">
+              <table className="w-full table-auto border-collapse">
+                <thead className="text-left text-white bg-[#1A5BB7]">
                   <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Is Active</th>
-                    <th>Manage</th>
+                    <th className="px-3 py-2 rounded-l-xl">Id</th>
+                    <th className="min-w-fit w-28 px-3 py-2 text-center">
+                      Name
+                    </th>
+                    <th className="min-w-fit w-28 px-3 py-2 text-center">
+                      Is Active
+                    </th>
+                    <th className="min-w-fit w-36 px-3 py-2 rounded-r-xl text-center">
+                      Manage
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
