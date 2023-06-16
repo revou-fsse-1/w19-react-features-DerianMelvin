@@ -5,6 +5,8 @@ import { ErrorPage } from "./components/ErrorPage";
 import { Dashboard } from "./components/dashboard/Dashboard";
 import { EditData } from "./components/dashboard/EditData";
 import { AuthRoute } from "./components/AuthRoute";
+import { AddData } from "./components/dashboard/AddData";
+import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -15,8 +17,11 @@ function App() {
           <Route path="/login" element={<SignInForm />} />
           <Route path="/register" element={<SignUpForm />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/:id" element={<EditData />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/:id" element={<EditData />} />
+            <Route path="/dashboard/add" element={<AddData />} />
+          </Route>
         </Routes>
       </div>
     </div>
