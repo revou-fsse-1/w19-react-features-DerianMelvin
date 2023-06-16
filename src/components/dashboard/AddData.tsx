@@ -148,8 +148,7 @@ export const AddData = () => {
 
                 <div className="w-fit flex flex-col mt-5">
                   <button
-                    type="submit"
-                    className="px-6 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+                    className="px-6 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E] z-10"
                     onClick={(e) => handleFormSubmit(e)}
                   >
                     Add New Data
