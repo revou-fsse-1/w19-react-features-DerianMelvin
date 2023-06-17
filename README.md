@@ -4,11 +4,11 @@
 
 ## 👋 Greetings!
 
-Description WIP
+This is a website called [Listy](https://listy-site.netlify.app/), a simple React app where you can manage list of categories by adding, editing or deleting them. The app also has Auth capabilities before users can access the dashboard.
 
 ## 🔗 Link to Website
 
-### [WIP]()
+### [https://listy-site.netlify.app/](https://listy-site.netlify.app/)
 
 ## 🛠️ Tools
 [![Used Tools](https://skillicons.dev/icons?i=ts,react,vite,tailwind,git,github,netlify)](https://skillicons.dev)
